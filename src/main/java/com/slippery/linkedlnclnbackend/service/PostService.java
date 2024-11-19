@@ -6,7 +6,7 @@ import com.slippery.linkedlnclnbackend.models.Posts;
 public interface PostService {
     PostsDto createNewPost(PostsDto post);
     PostsDto updateExistingPost(PostsDto post);
-    PostsDto deletePost(PostsDto postsDto);
+    PostsDto deletePost(Long userId,Long postId);
     PostsDto deleteAllPosts(Long userId);
     PostsDto getAllPosts();
     PostsDto findPostsByKeyWords(String words);

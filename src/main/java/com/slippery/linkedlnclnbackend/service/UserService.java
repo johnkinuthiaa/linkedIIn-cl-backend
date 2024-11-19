@@ -5,7 +5,7 @@ import com.slippery.linkedlnclnbackend.models.User;
 
 public interface UserService {
     UserDto registerUser(User userDetails);
-    UserDto updateUser(User userDetails);
+    UserDto updateUser(User userDetails,Long id);
     UserDto login(User userDetails);
     UserDto logout();
 }

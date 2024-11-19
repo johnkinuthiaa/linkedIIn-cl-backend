@@ -33,7 +33,8 @@ public class PostServiceImpl implements PostService {
             newPost.setPostTo(post.getPostTo());
             newPost.setCreatedOn(LocalDateTime.now());
             newPost.setImage(post.getImage());
-            newPost.setUser(post.getUser());
+            newPost.setUser(userRepository.findByUsername(optUser.get().getUsername()));
+            postRepository.save(newPost);
             response.setMessage("post created successfully!");
             response.setStatusCode(200);
             response.setPost(newPost);
@@ -51,15 +52,18 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostsDto deletePost(PostsDto postsDto) {
-        Optional<User> optionalUser =userRepository.findById(postsDto.getUserId());
-        Optional<Posts> optionalPost =postRepository.findById(postsDto.getId());
+    public PostsDto deletePost(Long userId, Long postId) {
+        Optional<User> optionalUser =userRepository.findById(userId);
+        Optional<Posts> optionalPost =postRepository.findById(postId);
         PostsDto response =new PostsDto();
         if(optionalUser.isPresent()&&optionalPost.isPresent()){
-            postRepository.deleteById(postsDto.getId());
+            postRepository.deleteById(postId);
             response.setMessage("post deleted");
             response.setStatusCode(200);
-        }else{
+        }if(optionalUser.isEmpty()){
+            response.setMessage("cannot delete another persons post");
+        }
+        else{
             response.setMessage("post not deleted");
             response.setStatusCode(200);
         }

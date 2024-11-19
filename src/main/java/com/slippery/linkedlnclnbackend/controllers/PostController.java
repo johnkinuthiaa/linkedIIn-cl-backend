@@ -20,20 +20,20 @@ public class PostController {
     public PostController(PostService service) {
         this.service = service;
     }
-    @GetMapping("/create/post")
+    @PostMapping("/create/post")
     public ResponseEntity<PostsDto> createNewPost(@RequestBody PostsDto post){
         return ResponseEntity.ok(service.createNewPost(post));
     }
     @DeleteMapping("/delete/post")
-    public ResponseEntity<PostsDto> deletePost(PostsDto postsDto){
-        return ResponseEntity.ok(service.deletePost(postsDto));
+    public ResponseEntity<PostsDto> deletePost(@RequestParam Long userId, @RequestParam Long postId){
+        return ResponseEntity.ok(service.deletePost(userId, postId));
     }
     @GetMapping("/get/all")
     public ResponseEntity<PostsDto> getAllPosts(){
         return ResponseEntity.ok(service.getAllPosts());
     }
     @GetMapping("/search/words")
-    public ResponseEntity<PostsDto> findPostsByKeyWords(String words){
+    public ResponseEntity<PostsDto> findPostsByKeyWords(@RequestParam String words){
         return ResponseEntity.ok(service.findPostsByKeyWords(words));
     }
 }

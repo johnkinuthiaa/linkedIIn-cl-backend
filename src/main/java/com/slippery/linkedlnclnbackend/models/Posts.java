@@ -1,5 +1,6 @@
 package com.slippery.linkedlnclnbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,9 +25,9 @@ public class Posts {
     private String postTo;
     private String image;
     private LocalDateTime createdOn;
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id",nullable = false)
     private User user;
 
 }
