@@ -143,6 +143,8 @@ public class UserServiceImpl implements UserService {
         if(unFollower.isPresent()
                 &&personToUnfollow.isPresent()
                 &&!userId.equals(personToUnFollowId)
+                &&(unFollower.get().getFollowing()>0)
+                &&(personToUnfollow.get().getFollowers()>0)
         ){
             User currentUnFollower =unFollower.get();
             User personToBeUnFollowed =personToUnfollow.get();
@@ -154,7 +156,7 @@ public class UserServiceImpl implements UserService {
             repository.save(personToBeUnFollowed);
 
             response.setStatusCode(200);
-            response.setMessage(unFollower.get().getUsername() +"unfollowed "+personToUnfollow.get().getUsername());
+            response.setMessage(unFollower.get().getUsername() +" unfollowed "+personToUnfollow.get().getUsername());
             response.setStatusCode(200);
         }else{
             response.setMessage("cannot unfollow user at this time");
