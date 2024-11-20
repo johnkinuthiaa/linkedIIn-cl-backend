@@ -9,4 +9,9 @@ public interface UserService {
     UserDto updateUser(User userDetails,Long id);
     UserDto login(User userDetails);
     UserDto logout();
+    UserDto addFollowers(Long userId,Long personToFollowId);
+    UserDto removeFollower(Long userId,Long personToUnFollowId);
+    UserDto getProfile(Long userId);
+    UserDto getAllUsers();
+    UserDto findUserByUsername(String username);
 }

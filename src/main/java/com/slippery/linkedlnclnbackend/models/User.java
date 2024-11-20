@@ -26,6 +26,9 @@ public class User {
     private String phoneNumber;
     private String password;
     private String role ="user";
+    private Long following;
+    private Long followers;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Posts> posts = new HashSet<>();

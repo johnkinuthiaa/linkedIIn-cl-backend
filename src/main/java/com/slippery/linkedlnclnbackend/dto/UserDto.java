@@ -25,4 +25,5 @@ public class UserDto {
     private User user;
     private List<Posts> allPosts;
     private Posts post;
+    private String jwtToken;
 }

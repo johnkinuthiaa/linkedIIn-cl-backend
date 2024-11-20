@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     /*
     UserDto logout();
+        UserDto getAllUsers();
+    UserDto findUserByUsername();
      */
     private final UserService userService;
     public UserController(UserService userService){
@@ -29,4 +31,21 @@ public class UserController {
     public ResponseEntity<UserDto> login(@RequestBody User userDetails){
         return ResponseEntity.ok(userService.login(userDetails));
     }
+    @PostMapping("/add/followers")
+    public ResponseEntity<UserDto> addFollowers(@RequestParam Long userId, @RequestParam Long personToFollowId){
+        return ResponseEntity.ok(userService.addFollowers(userId,personToFollowId));
+    }
+    @GetMapping("/all")
+    public ResponseEntity<UserDto> getAllUsers(){
+        return ResponseEntity.ok(userService.getAllUsers());
+    }
+    @GetMapping("/get-profile")
+    public ResponseEntity<UserDto> getProfile (@RequestParam Long userId){
+        return ResponseEntity.ok(userService.getProfile(userId));
+    }
+    @PostMapping("/unfollow")
+    public ResponseEntity<UserDto> removeFollower(@RequestParam Long userId, @RequestParam Long personToUnFollowId){
+        return ResponseEntity.ok(userService.removeFollower(userId,personToUnFollowId));
+    }
+
 }
