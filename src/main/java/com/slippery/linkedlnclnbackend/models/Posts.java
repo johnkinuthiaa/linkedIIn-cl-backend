@@ -21,6 +21,7 @@ public class Posts {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Lob
     private String content;
     private String postTo;
     private String image;

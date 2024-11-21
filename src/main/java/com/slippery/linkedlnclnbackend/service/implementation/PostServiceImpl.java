@@ -27,7 +27,11 @@ public class PostServiceImpl implements PostService {
     public PostsDto createNewPost(PostsDto post) {
         Optional<User> optUser =userRepository.findById(post.getUserId());
         PostsDto response =new PostsDto();
-        if(optUser.isPresent()){
+        if(post.getContent().isEmpty()){
+            response.setMessage("cannot post an empty blog");
+            response.setStatusCode(405);
+        }
+        else if(optUser.isPresent()){
             Posts newPost = new Posts();
             newPost.setContent(post.getContent());
             newPost.setPostTo(post.getPostTo());

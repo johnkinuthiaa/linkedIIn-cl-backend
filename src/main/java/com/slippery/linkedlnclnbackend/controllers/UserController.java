@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/api/v1/auth")
+@CrossOrigin("localhost:5173")
 public class UserController {
     /*
     UserDto logout();

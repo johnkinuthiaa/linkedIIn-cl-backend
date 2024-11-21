@@ -7,13 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@CrossOrigin("")
+
 @RequestMapping("/api/v1/posts")
+
 public class PostController {
-//    ;
-//    PostsDto updateExistingPost(PostsDto post);
-//    PostsDto deletePost(PostsDto postsDto);
-//    PostsDto deleteAllPosts(Long userId);
 
     private final PostService service;
 

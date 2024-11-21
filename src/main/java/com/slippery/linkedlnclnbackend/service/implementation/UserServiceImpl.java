@@ -115,9 +115,13 @@ public class UserServiceImpl implements UserService {
             User theFollowed =userToBeFollowed.get();
 
             var hisFollowing =theFollower.getFollowing();
+            var hisFollowingList =theFollower.getFollowingList();
+            hisFollowingList.add(theFollowed.getUsername());
 
             theFollower.setFollowing(hisFollowing+1);
             var hisFollowers =theFollowed.getFollowers();
+            var hisFollowersList =theFollowed.getFollowersList();
+            hisFollowersList.add(theFollower.getUsername());
 
             theFollowed.setFollowers(hisFollowers+1);
             repository.save(theFollowed);

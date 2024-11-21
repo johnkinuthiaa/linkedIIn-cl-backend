@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.slippery.linkedlnclnbackend.models.Posts;
 import com.slippery.linkedlnclnbackend.models.User;
+import jakarta.persistence.Column;
 import jakarta.persistence.Lob;
 import lombok.Data;
 
