@@ -13,7 +13,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173/,https://linked-in-front-end-delta.vercel.app/")
+                        .allowedOrigins("https://linked-in-front-ivb10velh-lightyagamis-projects-11b2a5c2.vercel.app")
                         .allowedMethods("GET","DELETE","POST","PUT");
             }
         };
